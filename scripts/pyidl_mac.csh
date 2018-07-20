@@ -6,21 +6,19 @@
 
 # Zarro (ADNET) 7-18-18
 
-setenv TOP /Users/zarro
-setenv IDL_DIR $TOP/idl85
-
-setenv PYTHONTOP $TOP/anaconda2
-set PYTHONEXE = $PYTHONTOP/bin/python
+setenv TOP /Users/zarro/anaconda2
+setenv IDL_DIR /Users/zarro/idl85
+set PYTHONEXE = $TOP/bin/python
 
 if !(-e $PYTHONEXE) then
  echo "Python executable not found."
  exit 1
 endif
 
-
 set OLD_PATH = $PATH
-setenv PATH $PYTHONTOP/bin:${PATH}
-setenv PYTHONPATH $IDL_DIR/lib/bridges
+setenv PATH $TOP/bin:${PATH}
+setenv PYTHONPATH $IDL_DIR/bin/bin.darwin.x86_64:$IDL_DIR/lib/bridges
+setenv PYTHONHOME $TOP
 
 # add optional SSW modules
 

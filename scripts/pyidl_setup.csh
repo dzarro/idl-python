@@ -10,10 +10,11 @@
 set CWD = `pwd` 
 onintr catch
 
-setenv TOP /Users/zarro
-setenv IDL_DIR $TOP/idl85
-setenv PATH $TOP/anaconda2/bin:${PATH}
-setenv PYTHONHOME $TOP/anaconda2
+setenv TOP /Users/zarro/anaconda2
+setenv IDL_DIR /Users/zarro/idl85
+
+setenv PATH $TOP/bin:${PATH}
+setenv PYTHONHOME $TOP
 setenv PYTHONPATH $IDL_DIR/bin/bin.darwin.x86_64:$IDL_DIR/lib/bridges 
 
 cd $IDL_DIR/lib/bridges
