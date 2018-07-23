@@ -9,11 +9,13 @@
 set SUCCESS_FLAG = 0
 onintr catch
 
-setenv TOP /Users/zarro/anaconda2
-setenv IDL_DIR /Users/zarro/idl85
+setenv TOP /usr
+#setenv IDL_DIR /Users/zarro/idl85
+set PYTHONLIB=$TOP/lib/python2.7
+
+# set paths for Python and IDL to find each other
 
 set PYTHONEXE = $TOP/bin/python
-
 if !(-e $PYTHONEXE) then
  echo "Python executable not found."
  exit 1
@@ -39,7 +41,6 @@ setenv PYTHONHOME $TOP
  set MAC_CHECK = `uname | grep -i darwin`
 
 if ($#MAC_CHECK == 0) then
-set PYTHONLIB=${TOP}/lib
  setenv LD_LIBRARY_PATH ${PYTHONLIB}:${SO_DIR}
 endif
 
@@ -69,6 +70,7 @@ if ($ssw == 1) then
   setenv PYTHONPATH ${PYTHONPATH}:$SSW/gen/python/bridge
   setenv PYTHONSTARTUP $SSW/gen/python/bridge/startup.py
  endif
+endif
 
 # Start Python with optional input script. 
 # -B means don't create .pyc files.
