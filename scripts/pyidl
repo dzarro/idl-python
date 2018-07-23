@@ -2,22 +2,31 @@
 
 # Load Python-IDL bridge on Mac OS and Linux 
 # Optimized for Anaconda/Python 2.7 and IDL 8.5  
-# Make sure to define or hardwire $TOP and $IDL_DIR beforehand to your local setup.
+# Make sure to define $PYTHONHOME and $IDL_DIR beforehand to your local setup.
 
 # Zarro (ADNET) 7-18-18
 
 set SUCCESS_FLAG = 0
 onintr catch
 
-setenv TOP /usr
-#setenv IDL_DIR /Users/zarro/idl85
-set PYTHONLIB=$TOP/lib/python2.7
+if !($?IDL_DIR) then
+  echo "% Undefined IDL_DIR environment variable."
+  exit 1
+endif
+
+if !($?PYTHONHOME) then
+  echo "% Undefined PYTHONHOME environment variable."
+  echo "% Example: setenv PYTHONHOME /Users/zarro/anaconda2"
+  exit 1
+endif
 
 # set paths for Python and IDL to find each other
 
-set PYTHONEXE = $TOP/bin/python
+set PYTHONLIB = $PYTHONHOME/lib
+set PYTHONEXE = $PYTHONHOME/bin/python
+
 if !(-e $PYTHONEXE) then
- echo "Python executable not found."
+ echo "% Python executable not found."
  exit 1
 endif
 
@@ -26,15 +35,14 @@ endif
 set SO_FILE = `find $IDL_DIR/bin -name "pythonidl27.so" -print`
 
 if !(-e $SO_FILE) then
- echo "IDL-PYTHON shareable libraries not found on this system."
+ echo "%IDL-PYTHON shareable libraries not found on this system."
  exit 1
 endif
 
 set SO_DIR = `dirname $SO_FILE`
 set OLD_PATH = $PATH
-setenv PATH $TOP/bin:${PATH}
+setenv PATH $PYTHONHOME/bin:${PATH}
 setenv PYTHONPATH ${SO_DIR}:$IDL_DIR/lib/bridges
-setenv PYTHONHOME $TOP
 
 # If not Mac/Darwin, define LD_LIBRARY_PATH
 
@@ -90,7 +98,7 @@ catch:
 setenv PATH $OLD_PATH
 
 if ($SUCCESS_FLAG == 0) then
- echo "Sorry, something went wrong."
+ echo "% Sorry, something went wrong."
  exit 1
 endif
 
