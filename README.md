@@ -1,2 +1,2 @@
-# idl-python
-Useful scripts to install and run IDL-Python bridge
+# python-idl
+Useful scripts to install and run Python-IDL bridge
