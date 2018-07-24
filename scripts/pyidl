@@ -40,8 +40,6 @@ if !(-e $SO_FILE) then
 endif
 
 set SO_DIR = `dirname $SO_FILE`
-set OLD_PATH = $PATH
-setenv PATH $PYTHONHOME/bin:${PATH}
 setenv PYTHONPATH ${SO_DIR}:$IDL_DIR/lib/bridges
 
 # If not Mac/Darwin, define LD_LIBRARY_PATH
@@ -94,8 +92,6 @@ set SUCCESS_FLAG = 1
 # Catch any errors.
 
 catch:
-
-setenv PATH $OLD_PATH
 
 if ($SUCCESS_FLAG == 0) then
  echo "% Sorry, something went wrong."
