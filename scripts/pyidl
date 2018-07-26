@@ -1,7 +1,6 @@
 #!/bin/csh -f 
 
 # Load Python-IDL bridge on Mac OS and Linux 
-# Optimized for Anaconda/Python 2.7 and IDL 8.5  
 # Make sure to define $PYTHONHOME and $IDL_DIR beforehand to your local setup.
 
 # Zarro (ADNET) 7-18-18
@@ -32,7 +31,7 @@ endif
 
 # Locate IDL-PYTHON shareable libraries (SO).
 
-set SO_FILE = `find $IDL_DIR/bin -name "pythonidl27.so" -print`
+set SO_FILE = `find $IDL_DIR/bin -name "pythonidl36.so" -print`
 
 if !(-e $SO_FILE) then
  echo "%IDL-PYTHON shareable libraries not found on this system."
@@ -80,7 +79,7 @@ endif
 
 # Start Python with optional input script. 
 # -B means don't create .pyc files.
- 
+
 if ($input == 1) then
   $PYTHONEXE -B $argv[1]
 else

@@ -93,9 +93,19 @@ if sys.platform == "darwin":
         cmd = ["install_name_tool", "-change", pylib, pylibpath, pythonidllibpath]
         print("\n" + " ".join(cmd))
         check_call(cmd)
+
+        cmd = ["install_name_tool", "-change", "@rpath/" + pylib, pylibpath, pythonidllibpath]
+        print("\n" + " ".join(cmd))
+        check_call(cmd)
+
         cmd = ["install_name_tool", "-change", pylib, pylibpath, idlpythonlibpath]
         print("\n" + " ".join(cmd))
         check_call(cmd)
+
+        cmd = ["install_name_tool", "-change", "@rpath/" + pylib, pylibpath, idlpythonlibpath]
+        print("\n" + " ".join(cmd))
+        check_call(cmd)
+ 
     except Exception as e:
         print("\n*** install_name_tool failed.")
         print("\n*** Check the paths above, or run the script as 'sudo python setup.py'.")
