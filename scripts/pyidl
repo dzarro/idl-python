@@ -14,9 +14,9 @@ if !($?IDL_DIR) then
 endif
 
 if !($?PYTHONHOME) then
-  echo "% Undefined PYTHONHOME environment variable."
-  echo "% Example: setenv PYTHONHOME /Users/zarro/anaconda2"
-  exit 1
+ echo "% Undefined PYTHONHOME environment variable."
+ echo "% Example: setenv PYTHONHOME /Users/zarro/anaconda2"
+ exit 1
 endif
 
 # set paths for Python and IDL to find each other
@@ -31,9 +31,8 @@ endif
 
 # Locate IDL-PYTHON shareable libraries (SO).
 
-set SO_FILE = `find $IDL_DIR/bin -name "pythonidl36.so" -print`
-
-if !(-e $SO_FILE) then
+set SO_FILE = `find $IDL_DIR/bin -name "pythonidl*.so" -print`
+if ($#SO_FILE == 0)  then
  echo "%IDL-PYTHON shareable libraries not found on this system."
  exit 1
 endif

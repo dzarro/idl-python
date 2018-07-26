@@ -1,7 +1,7 @@
 #!/bin/csh -f 
 
 # Run IDL-Python bridge setup
-# Optimized for Anaconda/Python 2.7 and IDL 8.5.
+# Optimized for Anaconda/Python 3.
 # Make sure to define or hardwire $PYTHONHOME and $IDL_DIR beforehand to your local setup.
 # Run as "sudo csh pyidl_setup"
 
@@ -10,12 +10,17 @@
 set CWD = `pwd` 
 onintr catch
 
-setenv IDL_DIR /usr/local/exelis/idl85
-setenv PYTHONHOME /usr
-setenv PYTHONPATH $IDL_DIR/lib/bridges 
+setenv SSW /solarsoft
+setenv PYTHONHOME /Users/zarro/anaconda3
+setenv IDL_DIR /Applications/harris/idl
+setenv PYTHONPATH $IDL_DIR/lib/bridges
+ 
+if !(-e $IDL_DIR/lib/bridges/setup_fix.py) then
+ cp $SSW/gen/python/bridge/setup.py $IDL_DIR/lib/bridges/setup_fix.py
+endif
 
 cd $IDL_DIR/lib/bridges
-$PYTHONHOME/bin/python setup.py install   
+$PYTHONHOME/bin/python setup_fix.py install   
 
 catch:
 if ($?CWD) then  
