@@ -3,7 +3,7 @@
 # Load Python-IDL bridge on Mac OS and Linux 
 # Make sure to define $PYTHONHOME and $IDL_DIR beforehand to your local setup.
 
-# Zarro (ADNET) 26-Jul-2018
+# Zarro (ADNET) 26-July-18
 
 set SUCCESS_FLAG = 0
 onintr catch

@@ -1,11 +1,10 @@
 #!/bin/csh -f 
 
 # Run IDL-Python bridge setup
-# Optimized for Anaconda/Python 3.
-# Make sure to define or hardwire $PYTHONHOME and $IDL_DIR beforehand to your local setup.
+# Make sure to define or hardwire $SSW, $PYTHONHOME, and $IDL_DIR beforehand to your local setup.
 # Run as "sudo csh pyidl_setup"
 
-# Zarro (ADNET) 10-13-17 
+# Zarro (ADNET) 26-July-18 
 
 set CWD = `pwd` 
 onintr catch

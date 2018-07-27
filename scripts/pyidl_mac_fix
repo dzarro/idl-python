@@ -1,11 +1,11 @@
 #!/bin/csh -f 
 
-# Mac OS fix for IDL-Python bridge using Anaconda/Python 3.6 and IDL 8.6.
+# Mac OS fix for IDL-Python bridge 
 # Make sure to define or hardwire $PYTHONHOME and $IDL_DIR beforehand to your local setup.
 # Run as "sudo pyidl_mac_fix"
 # I have no clue how this works, but I cribbed it from extensive Google searching.
 
-# Zarro (ADNET) 10-13-17 
+# Zarro (ADNET) 26-July-18 
 
 set CWD = `pwd` 
 onintr catch
