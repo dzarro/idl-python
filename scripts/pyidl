@@ -3,7 +3,7 @@
 # Load Python-IDL bridge on Mac OS and Linux 
 # Make sure to define $PYTHONHOME and $IDL_DIR beforehand to your local setup.
 
-# Zarro (ADNET) 7-18-18
+# Zarro (ADNET) 26-Jul-2018
 
 set SUCCESS_FLAG = 0
 onintr catch
@@ -37,7 +37,7 @@ if ($#SO_FILE == 0)  then
  exit 1
 endif
 
-set SO_DIR = `dirname $SO_FILE`
+set SO_DIR = `dirname $SO_FILE[1]`
 setenv PYTHONPATH ${SO_DIR}:$IDL_DIR/lib/bridges
 
 # If not Mac/Darwin, define LD_LIBRARY_PATH
