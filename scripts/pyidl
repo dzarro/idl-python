@@ -21,7 +21,6 @@ endif
 
 # set paths for Python and IDL to find each other
 
-setenv PATH $PYTHONHOME/bin:${PATH}
 set PYTHONLIB = $PYTHONHOME/lib
 set PYTHONEXE = $PYTHONHOME/bin/python
 
@@ -39,7 +38,7 @@ if ($#SO_FILE == 0)  then
 endif
 
 set SO_DIR = `dirname $SO_FILE[1]`
-setenv PYTHONPATH ${SO_DIR}:$IDL_DIR/lib/bridges
+setenv PYTHONPATH $IDL_DIR/lib/bridges
 
 # If not Mac/Darwin, define LD_LIBRARY_PATH
 
