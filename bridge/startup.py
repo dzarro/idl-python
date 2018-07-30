@@ -4,8 +4,6 @@
 print("Running Python-IDL bridge startup...")
 try:
     import bridge
-    bridge.startup()
+    IDL=bridge.startup()
 except:
-    pass
-
-from idlpy import * 
+    from idlpy import * 
