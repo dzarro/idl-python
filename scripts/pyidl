@@ -21,6 +21,7 @@ endif
 
 # set paths for Python and IDL to find each other
 
+setenv PATH $PYTHONHOME/bin:${PATH}
 set PYTHONLIB = $PYTHONHOME/lib
 set PYTHONEXE = $PYTHONHOME/bin/python
 
